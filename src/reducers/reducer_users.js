@@ -1,6 +1,10 @@
 import { SET_USERS, DELETE_USER, ADD_USER, EDIT_USER } from "../constants";
 
-export default (state = [], action) => {
+let initialState = {
+    users: []
+};
+
+export default (state = initialState, action) => {
     let id = null;
     let oldUsers = null;
     let newState = null;

@@ -124,6 +124,8 @@ class Edit extends Component {
 	}
 }
 
+
+
 function mapStateToProps(state) {
 	return {
 		users: state.userList.users

@@ -1,11 +1,13 @@
 import { SET_USERS, DELETE_USER, ADD_USER , EDIT_USER} from "../constants";
 import axios from "axios";
+import { endpoint } from "../api.js";
+
 
 //Niestety nie dążyłem poprawnie zitegrować zapytań modyfikujących z api // gdyby API naprawdę działało inaczaj przygotowałbym reducery
 
 export const set_users=()=> {
 	return (dispatch, getState) => {
-		axios.get("https://jsonplaceholder.typicode.com/users").then(
+		axios.get(endpoint).then(
 			response => {
 				dispatch({
 					type: SET_USERS,
@@ -30,7 +32,7 @@ export const delete_user = (id, oldUsers) => {
 };
 
 export function add_user(newUser, oldUsers) {
-	// axios.post(`https://jsonplaceholder..com/users/`,newUser); 
+	// axios.post(`https://jsonplaceholder.com/users/`,newUser); 
 	const action = {
 		type: ADD_USER,
 		oldUsers,
@@ -40,7 +42,7 @@ export function add_user(newUser, oldUsers) {
 }
 
 export function edit_user(userEdited) {
-	// axios.put(`https://jsonplaceholder..com/users/`+id); 
+	// axios.put(`https://jsonplaceholder.com/users/`+id); 
 	const action = {
 		type: EDIT_USER,
 		userEdited
