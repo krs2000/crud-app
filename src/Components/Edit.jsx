@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { edit_user } from "../actions";
+import { edit_user,set_users } from "../actions";
 
 class Edit extends Component {
 
@@ -13,6 +13,15 @@ class Edit extends Component {
 			email: ""
 		};
 }
+
+
+
+	componentWillMount(){
+		if(this.props.users.length === 0){
+		this.props.set_users()
+	}
+	}
+
 
 	returnUser = property => {
 		const user = this.props.users.find(
@@ -54,7 +63,7 @@ class Edit extends Component {
 			).email = this.state.email;
 		}
 		// console.log(user)
-		this.props.dispatch(edit_user(users));
+		this.props.edit_user(users);
 			alert("User Edited");
 	};
 
@@ -116,7 +125,7 @@ class Edit extends Component {
 				<div className="row text-center">
 					<div className="col-md-6 offset-md-3">
 						<h2>Edit User</h2>
-						{this.props.users && this.returnForm()}
+						{this.props.users.length>0 && this.returnForm()}
 					</div>
 				</div>
 			</div>
@@ -132,4 +141,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps, null)(Edit);
+export default connect(mapStateToProps, { edit_user, set_users })(Edit);

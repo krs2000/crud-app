@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { delete_user } from "../actions";
+import { delete_user, set_users } from "../actions";
 import { connect } from "react-redux";
 
 class Home extends Component {
 
+	componentWillMount(){
+		console.log(this.props)
+		if(this.props.users.length === 0){
+		this.props.set_users()
+	}
+	}
+
 	handleDelete = id => {
-		this.props.dispatch(delete_user(id, this.props.users));
+		this.props.delete_user(id, this.props.users);
 	};
 
 	returnTable = () => {
@@ -85,4 +92,4 @@ function mapStateToProps(state) {
 		users: state.userList.users
 	};
 }
-export default connect(mapStateToProps, null)(Home);
+export default connect(mapStateToProps,  { delete_user , set_users })(Home);

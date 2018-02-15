@@ -8,7 +8,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import reducer from './reducers';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, compose  } from 'redux';
-import {set_users } from "./actions";
 import thunk from 'redux-thunk';
 
 const middleware =applyMiddleware(thunk);
@@ -20,7 +19,7 @@ const store =createStore(reducer,
 	);
 
 
-store.dispatch(set_users())
+
 
 
 ReactDOM.render(

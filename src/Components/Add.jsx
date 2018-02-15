@@ -20,8 +20,8 @@ class Add extends Component {
 	handleSubmit = () => {
 		let newId = this.props.users[this.props.users.length - 1].id;
 		newId = newId + 1;
-		this.setState({ id: newId }, () =>
-			this.props.dispatch(add_user(this.state, this.props.users))
+		this.setState({ id: newId }, ()=>
+			this.props.add_user(this.state, this.props.users)
 		);
 
 		alert("User Added");
@@ -91,4 +91,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps, null)(Add);
+export default connect(mapStateToProps,  { add_user } )(Add);
