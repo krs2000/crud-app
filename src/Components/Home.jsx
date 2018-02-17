@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 class Home extends Component {
 
 	componentWillMount(){
-		console.log(this.props)
 		if(this.props.users.length === 0){
 		this.props.set_users()
 	}
